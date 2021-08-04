@@ -1,0 +1,22 @@
+a{
+    font-size:x-large;
+    margin: auto 10px;
+    color: blue;
+}
+div{
+    margin: 20px;
+}
+h1{
+    text-align: center;
+}
+body{
+    font-size:x-large;
+    margin: auto 30px;
+}
+.con{
+    border: solid;
+    width: auto 50%;
+    text-align: center;
+    padding: 20px;
+
+}
