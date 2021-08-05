@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simply Blogging</title>
+    <script src="functions.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        div{
+            
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class = header>
+            <h1>Simply Blogging</h1>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <div class="nav">
+                <li class="nav-item active">
+                <a class="nav-link" href="#">Add Blog <span class="sr-only">(current)</span></a>
+                </li>
+            </div>
+            <div class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            </div>
+            <div class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+            </div>
+            <div class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+            </div>
+          </ul>
+        </div>
+      </nav>
+
+
+      <div class="container">
+        <form class="form-group" onsubmit="addBlog()" >
+            <h3>Add a Blog!</h3>
+        <div class="row">
+            <div class="col-2"><label>Title</label></div>
+            <div class="col-3"><input type="text" id="title" class="form-control" required="true"/></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><label>Articles</label></div>
+            <div class="col-8"><textarea id="textArticle" class="form-control" required></textarea></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><label>Link to Image URL</label></div>
+            <div class="col-3"><input type="text" id="imageAdress" class="form-control"/></div>
+        </div>
+        <div class="row">
+            <div class="col-2"><input type="submit" value="Add Blog" class="btn btn-success"/></div>
+        </div>
+        </form>
+      </div>
+
+      <div class="container-fluid">
+          <h3>Most recent blogs:</h3>
+          <div class="row" id="blogs">
+              
+          </div>
+      </div>
+      <script type="text/javascript">
+      displayBlogs();
+    </script>
+</body>
+</html>
