@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cart</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Shopping Cart Checkout</h1>
+    <div class = "container">
+        <div id = "tableContainer">
+
+        </div>
+        <div id = "totalPrice">
+            <p id="total"></p>
+            <script type="text/javascript">
+                var cart = JSON.parse(localStorage.getItem("cart"))
+                var t = 0
+                for(var i = 0; i < cart.length; i++){
+                    t += cart[i].price
+                }
+                document.getElementById("total").innerHTML = "Total Price: $" + t;
+            </script>
+            <a href="index.html">Back</a>
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        displayData()
+    </script>
+</body>
+</html>
