@@ -1,0 +1,30 @@
+<h1 style="text-align: center;">My Portfolio</h1>
+
+<div class="container"><br><br><br>
+    <div class = "row">
+        <div class="col">
+            <h5>Welcome {{name}}!</h5>
+        </div><br><br>
+    </div>
+    <div class="row">
+        <div class="col-2">Contact Name:</div>
+        <div class="col-8"><input type="text" class="form-control" #contactName></div>
+    </div><br>
+    <div class="row">
+        <div class="col-2">Phone Number:</div>
+        <div class="col-8"><input type="text" class="form-control" #contactNum></div>
+    </div><br>
+    <div class="row">
+        <input type="button" value="Add Contact!" (click)="addTable(contactName,contactNum)" class="btn btn-success">
+    </div><br><br>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </tr>
+        <tr *ngFor="let c of array">
+            <td>{{c.name}}</td>
+            <td>{{c.number}}</td>
+        </tr>
+    </table>
+</div>
