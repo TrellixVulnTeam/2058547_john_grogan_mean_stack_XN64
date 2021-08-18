@@ -1,0 +1,12 @@
+.form{
+    margin: 20px;
+    width: 40%;
+    float:left;
+    font-size: large;
+
+}
+table {
+    margin: 20px;
+    width: 50%;
+    float:right;
+  }
