@@ -1,0 +1,12 @@
+[
+    {"question":"5+5", "ans1":"0", "ans2":"10", "ans3":"5", "ans4":"7", "correctAns":"2","num":"1","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"2+3", "ans1":"5", "ans2":"7", "ans3":"9", "ans4":"1", "correctAns":"1","num":"2", "statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"5x5", "ans1":"0", "ans2":"10", "ans3":"25", "ans4":"8", "correctAns":"3","num":"3","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"5/5", "ans1":"1", "ans2":"10", "ans3":"5", "ans4":"7", "correctAns":"1","num":"4","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"2+5", "ans1":"0", "ans2":"10", "ans3":"5", "ans4":"7", "correctAns":"4","num":"5","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"15+5", "ans1":"20", "ans2":"0", "ans3":"95", "ans4":"7", "correctAns":"1","num":"6","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"7+4", "ans1":"11", "ans2":"10", "ans3":"5", "ans4":"7", "correctAns":"1","num":"7","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"1-2", "ans1":"-1", "ans2":"10", "ans3":"5", "ans4":"7", "correctAns":"1","num":"8","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"25+5", "ans1":"0", "ans2":"30", "ans3":"5", "ans4":"7", "correctAns":"2","num":"9","statment1":"", "statment2":"", "statment3":"","statment4":""},
+    {"question":"5+59", "ans1":"0", "ans2":"10", "ans3":"64", "ans4":"7", "correctAns":"3","num":"10","statment1":"", "statment2":"", "statment3":"","statment4":""}
+]
