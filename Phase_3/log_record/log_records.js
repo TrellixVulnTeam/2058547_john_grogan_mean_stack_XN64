@@ -20,6 +20,10 @@ function addUser(){
     debugger;
 
     fs.writeFileSync("logs.json", JSON.stringify(logs))
+    console.log();
+    console.log("User has been logged...");
+    console.log("The current state of the log is...")
+    console.log(logs);
 }
 
 addUser()
