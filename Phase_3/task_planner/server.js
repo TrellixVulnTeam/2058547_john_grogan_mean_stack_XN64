@@ -20,6 +20,7 @@ let start =
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Planner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <h2 style="text-align: center;"> Task Planner</h2><br>
@@ -40,10 +41,11 @@ let addHTML =
             <input type="submit" value="Add Task">
             <input type="reset" value="Reset">
         </form>
-    </div><br>
+    </div>
 `
 let deleteHTML = 
 `
+<br>
 <div style="border: 1px solid; width: 30%; padding: 10px; margin: 10px;">
         <h2>Delete Task</h2>
         <form action="deleteTask">
@@ -52,13 +54,14 @@ let deleteHTML =
             <input type="submit" value="Add Task">
             <input type="reset" value="Reset">
         </form>
-    </div><br>
+    </div>
 `
 let startTableHTML = 
 `
-<div style="border: 1px solid; width: 30%; padding: 10px; margin: 10px;">
+<br>
+<div style="width: 100%; padding: 10px; margin: 10px;">
         <h2>List Task</h2>
-        <table style="border:solid;">
+        <table class='table'>
             <tr>
                 <th>Employee Id</th>
                 <th>Task Id</th>
