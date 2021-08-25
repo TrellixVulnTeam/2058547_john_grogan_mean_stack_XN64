@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 style="text-align: center;"> Task Planner</h2><br>
+    <div style="border: 1px solid; width: 30%; padding: 10px; margin: 10px;">
+        <h2>Add Task</h2>
+        <form action="addTask">
+            <label>Employee ID: </label>
+            <input type="text" name="empId" required><br/><br/>
+            <label>Task ID: </label>
+            <input type="text" name="taskId" required><br/><br/>
+            <label>Task: </label>
+            <input type="text" name="task" required><br/><br/>
+            <label>Deadline: </label>
+            <input type="date" name="deadline" required><br/><br/>
+            <input type="submit" value="Add Task">
+            <input type="reset" value="Reset">
+        </form>
+    </div><br>
+    <div style="border: 1px solid; width: 30%; padding: 10px; margin: 10px;">
+        <h2>Delete Task</h2>
+        <form action="deleteTask">
+            <label>Task ID: </label>
+            <input type="text" name="taskId" required><br/><br/>
+            <input type="submit" value="Add Task">
+            <input type="reset" value="Reset">
+        </form>
+    </div><br>
+    <div style="border: 1px solid; width: 30%; padding: 10px; margin: 10px;">
+        <h2>List Task</h2>
+        <table style="border:solid;">
+            <tr>
+                <th>Employee Id</th>
+                <th>Task Id</th>
+                <th>Task</th>
+                <th>Deadline</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
