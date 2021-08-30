@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatting With Socket</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/Javascript">
+        var socket = io();
+        socket.on("welcome", (msg)=>{
+            var currentdate = new Date(); 
+            let date = currentdate.getDate() + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear()
+            let time = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+            document.getElementById("chat").innerHTML = 
+            `
+            <div class="row" id = "chat"> 
+                <div class = "col-4 response">
+                    <p style="color: white;">${msg}</p>
+                    <p style="color: white; font-size: smaller;">${date} ${time}</p>
+                </div>
+            </div>
+            `
+        })
+        socket.on("response", (msg)=>{
+            var currentdate = new Date(); 
+            let date = currentdate.getDate() + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear()
+            let time = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+            let text = `
+            <div class="row" id = "chat"> 
+                <div class = "col-4 response">
+                    <p style="color: white;">${msg}</p>
+                    <p style="color: white; font-size: smaller;">${date} ${time}</p>
+                </div>
+            </div>
+            `
+            document.getElementById("chat").innerHTML += text
+        })
+        send = ()=>{
+            var currentdate = new Date(); 
+            let date = currentdate.getDate() + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear()
+            let time = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+            let message = document.getElementById("message").value
+            let before = document.getElementById("chat").innerHTML;
+            let text = `
+            <div class="row" id = "chat"> 
+                <div class = "col-9">
+
+                </div>
+                <div class = "col-2 question">
+                    ${message}
+                    <p style="font-size: smaller;">${date} ${time}</p>
+                </div>
+            </div>
+            `
+            document.getElementById("chat").innerHTML = before + text
+            document.getElementById("message").value = ""
+
+            socket.emit("chating", message)
+        }
+    </script>
+    <style>
+        div{
+            margin: 10px;
+        }
+        .response{
+            background-color: darkgrey;
+            border-radius: 25px;
+        }
+        .question{
+            background-color: #2596be;
+            color: white;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Chatting with Socket.Io</h1>
+    <div class="container" style="border: 1px solid;" id = "chat">
+
+    </div>
+    <div class="container" style="border: 1px solid;">
+        <div class = "row">
+            <div class = "col-10">
+                <input style="width: 100%" type = "text" id = "message">
+            </div>
+            <div class="col-1">
+                <input type="button" value = "Send" onclick="send()">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
