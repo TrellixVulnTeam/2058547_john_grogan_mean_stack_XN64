@@ -1,0 +1,17 @@
+[
+    {"Source":"1234567890", 
+    "Destination":"0987654321", 
+    "Source_location":"Dallas",
+    "Destination_location":"Houston",
+    "Call_duration":10,
+    "Roaming":false,
+    "Call_charge":10},
+    
+    {"Source":"0987654321",
+        "Destination":"1234567890", 
+        "Source_location":"College Station",
+        "Destination_location":"Denver",
+        "Call_duration":12,
+        "Roaming":true,
+        "Call_charge":12}
+]
