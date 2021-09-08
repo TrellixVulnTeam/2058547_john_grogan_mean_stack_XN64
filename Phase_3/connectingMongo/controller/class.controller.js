@@ -4,7 +4,36 @@ let classModel = require("../model/class.model");
 let getAllClassDetails = (req,res)=>{
     classModel.find({},(err,data)=>{
         if(!err){
-            res.json(data)
+            let html = 
+            `
+            <h1 style="text-align: center;">All Classes</h1>
+            <div style="margin: 20px;">
+            `
+            let tableContent = ""
+            let startTable = `<table border=1">
+            <tr>
+                <th>Course Id</th>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>`
+            for(d of data){
+                //console.log(d)
+                tableContent = tableContent + 
+                `
+                <tr>
+                    <td>`+d._id+`</td>
+                    <td>`+d.name+`</td>
+                    <td>`+d.description+`</td>
+                    <td>`+d.ammount+`</td>
+                </tr>
+                `
+            }
+            let tableEnd = `
+            </table> <br><br><a href="/">Back</a></div> 
+             
+            `
+            res.send(html + startTable + tableContent + tableEnd)
         }
         else{
             res.json(err)
@@ -33,13 +62,13 @@ let deleteClass = (request,response)=>{
     let cid = request.params.cid;
     classModel.deleteOne({_id:cid}, (err,result)=>{
         if(!err){
-            if(result.deleteCount == 0){
-                res.send(`Course Id does NOT exsist! Please try again. <br><br> 
+            if(result.deletedCount == 0){
+                response.send(`Course Id does NOT exsist! Please try again. <br><br> 
             <a href="//localhost:9090/delete">Back</a>
             `)
             }
             else{
-                res.send(`Course Deleted! <br><br> 
+                response.send(`Course Deleted! <br><br> 
             <a href="//localhost:9090/delete">Back</a>
             `)
             }
@@ -54,12 +83,15 @@ let updateClassDetails = (request,response)=>{
     let classes = request.body;
     classModel.updateOne({_id:classes._id}, {$set:{ammount:classes.ammount}}, (err,result)=>{
         if(!err){
-            response.send(result)
             if(result.modifiedCount == 0){
-                //wrong id or same ammount
+                response.send(`Course does not exist or the same amount was entered! <br><br> 
+            <a href="//localhost:9090/update">Back</a>
+            `)
             }
             else{
-                //correct and changed 
+                response.send(`Course Succesfully Updated! <br><br> 
+            <a href="//localhost:9090/update">Back</a>
+            `)
             }
         }
         else{

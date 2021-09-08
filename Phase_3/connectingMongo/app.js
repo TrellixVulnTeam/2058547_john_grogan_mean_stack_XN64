@@ -3,6 +3,7 @@ let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
 let cors = require("cors");
 let routerClass = require("./router/class.router");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 let app = express();
 
@@ -36,24 +37,85 @@ app.get("/update",(request,response)=>{
 app.get("/delete",(request,response)=>{
     response.sendFile(__dirname+"/delete.html")
 })
-app.get("/fetch",(request,response)=>{
-    response.sendFile(__dirname+"/allClasses.html")
+
+app.post("/addClass", (request,response)=>{
+    let classDetails = request.body;
+    classDetails.ammount = parseInt(classDetails.ammount);
+    classDetails._id = parseInt(classDetails._id);
+
+    let url = "http://localhost:9090/api/class/storeClass"
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST",url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+           //console.log(xhr.status);
+           //console.log(xhr.responseText);
+           response.send(xhr.responseText)
+        }};
+
+    xhr.send(JSON.stringify(classDetails));
 })
 
 app.post("/deleteClasses", (request,response)=>{
-    console.log("here");
-    let classId = request.body;
-    let url = "http://localhost:9090/api/class/deleteClass/"+classId._id;
-    //console.log(test);
-    response.sendFile(__dirname+"/delete.html")
+    let classInfo = request.body;
+    classInfo._id = parseInt(classInfo._id);
+
+    let url = "http://localhost:9090/api/class/deleteClass/"+classInfo._id;
+    let xhr = new XMLHttpRequest();
+    xhr.open("DELETE",url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+           //console.log(xhr.status);
+           //console.log(xhr.responseText);
+           response.send(xhr.responseText)
+        }};
+
+    xhr.send('');
+    
+
+    //response.sendFile(__dirname+"/delete.html");
 })
 
 app.post("/updateClass", (request,response)=>{
-    let classDetails = request.body;
-    classDetails.ammount = parseInt(classDetails.ammount);
-    //console.log(classDetails)
+    let classInfo = request.body;
+    classInfo._id = parseInt(classInfo._id);
+    classInfo.ammount = parseInt(classInfo.ammount);
+    
+    let url = "http://localhost:9090/api/class/updateClass"
+    let xhr = new XMLHttpRequest();
+    xhr.open("PUT",url,true);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+           //console.log(xhr.status);
+           //console.log(xhr.responseText);
+           response.send(xhr.responseText)
+        }};
 
-    response.sendFile(__dirname+"/update.html")
+    xhr.send(JSON.stringify(classInfo));
+
+    //response.sendFile(__dirname+"/update.html");
+})
+
+app.get("/fetch", (request,response)=>{
+    let url = "http://localhost:9090/api/class/getAllClasses"
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET",url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+           //console.log(xhr.status);
+           //console.log(xhr.responseText);
+           response.send(xhr.responseText)
+        }};
+
+    xhr.send('');
 })
 
 
