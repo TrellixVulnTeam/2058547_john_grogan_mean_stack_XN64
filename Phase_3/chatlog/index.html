@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io();
+        socket.on("welcome", (msg)=>{
+            console.log(msg);
+        })
+        send = ()=>{
+            console.log("hit");
+            var currentdate = new Date(); 
+            let d = currentdate.getDate() + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear();
+            let t = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+            let n = document.getElementById("name").value;
+            let m = document.getElementById("message").value;
+
+            let json = {name:n, message:m, date:d, time:t};
+            socket.emit("chat",json)
+        }
+    </script>
+</head>
+<body>
+     <h1 style="text-align: center;">Chatlog with Socket.Io and Mongoose</h1>
+     <div style="margin: 20ox;">
+        <form action="/" onsubmit="send()">
+            <label>Name:</label>
+            <input type="text" id="name"><br><br>
+            <label>Message:</label>
+            <input type="textarea" id="message"><br><br>
+            <input type="submit" value="Send Message">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+    <br><br>
+    <div style="margin: 20ox;">
+        <form action="/download">
+            <input type="submit" value="Download Messages">
+        </form>
+    </div>
+     
+</body>
+</html>
